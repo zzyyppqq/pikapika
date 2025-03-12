@@ -30,9 +30,9 @@ class _ComicCommentItemState extends State<ComicCommentItem> {
     var levelStyle = TextStyle(
         fontSize: 12, color: theme.colorScheme.secondary.withOpacity(.8));
     var connectStyle =
-        TextStyle(color: theme.textTheme.bodyText1?.color?.withOpacity(.8));
+        TextStyle(color: theme.textTheme.bodyLarge?.color?.withOpacity(.8));
     var datetimeStyle = TextStyle(
-        color: theme.textTheme.bodyText1?.color?.withOpacity(.6), fontSize: 12);
+        color: theme.textTheme.bodyLarge?.color?.withOpacity(.6), fontSize: 12);
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(

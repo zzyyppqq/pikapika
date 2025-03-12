@@ -161,7 +161,7 @@ class _DownloadImportScreenState extends State<DownloadImportScreen> {
             width: constraints.maxWidth,
             padding: const EdgeInsets.only(top: 15, bottom: 15),
             color:
-                (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                     .withOpacity(.05),
             child: const Text(
               '选择zip文件进行导入\n选择pki文件进行导入\n选择pkz文件进行阅读',
@@ -205,7 +205,7 @@ class _DownloadImportScreenState extends State<DownloadImportScreen> {
             width: constraints.maxWidth,
             padding: const EdgeInsets.only(top: 15, bottom: 15),
             color:
-                (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                     .withOpacity(.05),
             child: const Text(
               '从其他设备导入',
@@ -254,7 +254,7 @@ class _DownloadImportScreenState extends State<DownloadImportScreen> {
             width: constraints.maxWidth,
             padding: const EdgeInsets.only(top: 15, bottom: 15),
             color:
-                (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                     .withOpacity(.05),
             child: Text(
               '选择文件夹\n(导入里面所有的zip/pki)' + (!isPro ? "\n(发电后使用)" : ""),

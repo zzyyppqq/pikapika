@@ -107,7 +107,7 @@ class _CommentScreenState extends State<CommentScreen> {
           Container(
             height: 3,
             color:
-                (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                     .withOpacity(.05),
           ),
           Expanded(child: _buildChildrenPager())

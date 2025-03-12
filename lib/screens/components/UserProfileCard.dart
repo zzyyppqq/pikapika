@@ -73,7 +73,7 @@ class _UserProfileCardState extends State<UserProfileCard> {
     );
     var sloganStyle = TextStyle(
       fontSize: 10,
-      color: theme.textTheme.bodyText1?.color?.withOpacity(.5),
+      color: theme.textTheme.bodyLarge?.color?.withOpacity(.5),
     );
     var sloganStrutStyle = const StrutStyle(
       fontSize: 10,
@@ -180,26 +180,27 @@ class _UserProfileCardState extends State<UserProfileCard> {
     if (image != null) {
       final theme = Theme.of(context);
       final cropper = ImageCropper();
-      File? croppedFile = await cropper.cropImage(
+      CroppedFile? croppedFile = await cropper.cropImage(
         sourcePath: image.path,
-        aspectRatioPresets: [
-          CropAspectRatioPreset.square,
-        ],
+        // aspectRatioPresets: [
+        //   CropAspectRatioPreset.square,
+        // ],
         aspectRatio: const CropAspectRatio(ratioX: 200, ratioY: 200),
         maxWidth: 200,
         maxHeight: 200,
-        androidUiSettings: AndroidUiSettings(
+        uiSettings: [
+         AndroidUiSettings(
           toolbarTitle: "修改头像",
           toolbarColor: theme.appBarTheme.backgroundColor,
           toolbarWidgetColor: Colors.white,
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: true,
         ),
-        iosUiSettings: const IOSUiSettings(
+        IOSUiSettings(
           resetAspectRatioEnabled: true,
           aspectRatioLockEnabled: true,
           title: "修改头像",
-        ),
+        )]
       );
       if (croppedFile != null) {
         var buff = await croppedFile.readAsBytes();

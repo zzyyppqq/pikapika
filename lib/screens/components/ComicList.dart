@@ -155,7 +155,7 @@ class _ComicListState extends State<ComicList> {
                     '被封印的本子',
                     style: TextStyle(
                       fontSize: 12,
-                      color: (Theme.of(context).textTheme.bodyText1?.color ??
+                      color: (Theme.of(context).textTheme.bodyLarge?.color ??
                               Colors.black)
                           .withOpacity(.3),
                     ),
@@ -282,7 +282,7 @@ class _ComicListState extends State<ComicList> {
               width: width,
               height: height,
               color:
-                  (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                  (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                       .withOpacity(.05),
               child: Center(
                 child: Text(
@@ -290,7 +290,7 @@ class _ComicListState extends State<ComicList> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 12,
-                    color: (Theme.of(context).textTheme.bodyText1?.color ??
+                    color: (Theme.of(context).textTheme.bodyLarge?.color ??
                             Colors.black)
                         .withOpacity(.5),
                   ),
@@ -393,7 +393,7 @@ class _ComicListState extends State<ComicList> {
     if (widget.appendWidget != null) {
       tmp.add(Container(
         color:
-            (Theme.of(context).textTheme.bodyText1?.color ?? Colors.transparent)
+            (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.transparent)
                 .withOpacity(.1),
         margin: EdgeInsets.only(
           left: (rowCap - tmp.length) * gap,
@@ -463,7 +463,7 @@ class _ComicListState extends State<ComicList> {
               width: width,
               height: height,
               color:
-                  (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+                  (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
                       .withOpacity(.05),
               child: Center(
                 child: Text(
@@ -471,7 +471,7 @@ class _ComicListState extends State<ComicList> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: shadowFontSize,
-                    color: (Theme.of(context).textTheme.bodyText1?.color ??
+                    color: (Theme.of(context).textTheme.bodyLarge?.color ??
                             Colors.black)
                         .withOpacity(.5),
                   ),
@@ -632,7 +632,7 @@ class _ComicListState extends State<ComicList> {
     if (widget.appendWidget != null) {
       tmp.add(Container(
         color:
-            (Theme.of(context).textTheme.bodyText1?.color ?? Colors.transparent)
+            (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.transparent)
                 .withOpacity(.1),
         margin: EdgeInsets.only(
           left: (rowCap - tmp.length) * gap,

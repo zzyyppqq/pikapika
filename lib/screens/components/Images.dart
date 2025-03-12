@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,10 +23,7 @@ class ResourceFileImageProvider
   ResourceFileImageProvider(this.path, {this.scale = 1.0});
 
   @override
-  ImageStreamCompleter load(
-    ResourceFileImageProvider key,
-    DecoderCallback decode,
-  ) {
+  ImageStreamCompleter loadImage(ResourceFileImageProvider key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key),
       scale: key.scale,
@@ -40,8 +38,8 @@ class ResourceFileImageProvider
 
   Future<ui.Codec> _loadAsync(ResourceFileImageProvider key) async {
     assert(key == this);
-    return PaintingBinding.instance!.instantiateImageCodec(
-      await File(path).readAsBytes(),
+    return PaintingBinding.instance.instantiateImageCodecWithSize(
+      await ImmutableBuffer.fromUint8List(await File(path).readAsBytes()),
     );
   }
 
@@ -53,7 +51,11 @@ class ResourceFileImageProvider
   }
 
   @override
-  int get hashCode => hashValues(path, scale);
+  int get hashCode => super.hashCode;
+
+
+  // @override
+  // int get hashCode => Object.hash(path, scale);
 
   @override
   String toString() => '$runtimeType('
@@ -71,10 +73,7 @@ class ResourceDownloadFileImageProvider
   ResourceDownloadFileImageProvider(this.path, {this.scale = 1.0});
 
   @override
-  ImageStreamCompleter load(
-    ResourceDownloadFileImageProvider key,
-    DecoderCallback decode,
-  ) {
+  ImageStreamCompleter loadImage(ResourceDownloadFileImageProvider key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key),
       scale: key.scale,
@@ -89,8 +88,8 @@ class ResourceDownloadFileImageProvider
 
   Future<ui.Codec> _loadAsync(ResourceDownloadFileImageProvider key) async {
     assert(key == this);
-    return PaintingBinding.instance!.instantiateImageCodec(
-        await File(await method.downloadImagePath(path)).readAsBytes());
+    return PaintingBinding.instance!.instantiateImageCodecWithSize(
+        await ImmutableBuffer.fromUint8List(await File(await method.downloadImagePath(path)).readAsBytes()));
   }
 
   @override
@@ -101,7 +100,7 @@ class ResourceDownloadFileImageProvider
   }
 
   @override
-  int get hashCode => hashValues(path, scale);
+  int get hashCode => Object.hash(path, scale);
 
   @override
   String toString() => '$runtimeType('
@@ -120,10 +119,7 @@ class ResourceRemoteImageProvider
   ResourceRemoteImageProvider(this.fileServer, this.path, {this.scale = 1.0});
 
   @override
-  ImageStreamCompleter load(
-    ResourceRemoteImageProvider key,
-    DecoderCallback decode,
-  ) {
+  ImageStreamCompleter loadImage(ResourceRemoteImageProvider key, ImageDecoderCallback decode) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key),
       scale: key.scale,
@@ -139,8 +135,8 @@ class ResourceRemoteImageProvider
   Future<ui.Codec> _loadAsync(ResourceRemoteImageProvider key) async {
     assert(key == this);
     var downloadTo = await method.remoteImageData(fileServer, path);
-    return PaintingBinding.instance!.instantiateImageCodec(
-      await File(downloadTo.finalPath).readAsBytes(),
+    return PaintingBinding.instance!.instantiateImageCodecWithSize(
+        await ImmutableBuffer.fromUint8List(await File(downloadTo.finalPath).readAsBytes()),
     );
   }
 
@@ -154,7 +150,7 @@ class ResourceRemoteImageProvider
   }
 
   @override
-  int get hashCode => hashValues(fileServer, path, scale);
+  int get hashCode => Object.hash(fileServer, path, scale);
 
   @override
   String toString() => '$runtimeType('

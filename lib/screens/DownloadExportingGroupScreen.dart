@@ -353,7 +353,7 @@ class _DownloadExportingGroupScreenState
         return Container(
           width: constraints.maxWidth,
           padding: const EdgeInsets.all(15),
-          color: (Theme.of(context).textTheme.bodyText1?.color ?? Colors.black)
+          color: (Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black)
               .withOpacity(.05),
           child: Text(
             text,

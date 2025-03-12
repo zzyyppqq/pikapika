@@ -232,7 +232,7 @@ class _PkzComicInfoScreenState extends State<PkzComicInfoScreen>
                       child: Container(
                         color: Theme.of(context)
                             .textTheme
-                            .bodyText1!
+                            .bodyLarge!
                             .color!
                             .withOpacity(.05),
                         padding: const EdgeInsets.all(10),
